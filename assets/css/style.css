@@ -1,0 +1,299 @@
+* {
+    padding: 0;
+    margin: 0;   
+}
+
+body {
+    font-family: 'calibri';
+    background-image: linear-gradient(245.59deg, #4d9559 0%, #38703d 28.53%, #133917 75.52%);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: white;
+}
+
+h1 {
+    font-size: 20px;
+    color: #ddd;
+}
+
+/* targets body content like paragraphs */
+.content {
+    /* text-align: center;  */
+    flex: 1;
+    padding-top: 2%;
+}
+
+.content h2 {
+    /* space out heading */
+    padding: 1%; 
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 4%;
+}
+
+/* formats footer */
+footer {
+    text-align: center;
+    padding-top: 2%;
+    margin-top: auto;
+}
+
+/* Navigation bar */
+
+.brand {
+    float: left;
+    font-size: larger;
+    font-weight: bold;
+    padding-left: 2%;
+}
+
+/* customizes horizontal rules */
+hr {
+    margin-top: 2%;
+    border: 0.5px solid #333;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.nav {
+    /* positions elements to the right and adds a line break */
+    display: flex; 
+    /* inverts the order of the list in the nav bar */
+    flex-direction: row-reverse; 
+
+}
+
+.nav li{
+    /* positions elements in the navbar to the left */
+    float: left; 
+}
+
+.nav ul {
+    list-style: none; 
+}
+
+.nav li a {
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none; 
+}
+
+.nav li a:hover {
+    background-color: #333; 
+    /* sets a smooth transition between nav buttons */
+    transition: background-color .3s; 
+}
+
+.nav .active-nav {
+    /* underline active nav button */
+    text-decoration: underline; 
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    /* positions elements to the right and adds a line break */
+    display: flex; 
+    /* inverts the order of the list in the nav bar */
+    flex-direction: row-reverse;
+}
+
+/* Dropdown Content on brand (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    background: inherit; 
+    backdrop-filter: blur(10px); 
+    border-radius: 20px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a{
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content .active-menu {
+    text-decoration: underline; 
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: rgb(190, 151, 76);
+    border-radius: 20px;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .hamburger-btn {
+    color: white;
+}
+
+.cover-image { /* cover image properties */
+    width: 298px;
+    height: 421px;
+    margin-left: 1%;
+    margin-right: 1%;
+    /* adds shadow on blog image */
+    box-shadow: 10px 10px 20px -10px #333;
+}
+
+/* adds space after paragraph */
+p {
+    padding-bottom: 1%;
+    padding-top: 1%;
+}
+
+/* form */
+form {
+    background-color: #343434;
+    padding: 2%;
+    margin-left: 40%;
+    margin-right: 40%;
+    border-radius: 30px;
+}
+
+/* formatting input */
+input {
+    padding: 1%;
+    border-radius: 20px;
+    border-style: none;
+    margin-bottom: 2%;
+    margin-right: 2%;
+    width: 35%;
+}
+
+select {
+    padding: 1%;
+    border-radius: 20px;
+    border-style: none;
+    margin-bottom: 2%;
+    margin-right: 2%;
+    width: 100%;
+}
+
+.button {
+    color: white;
+    background-color: #38703d;
+    width: 15%;
+}
+
+/* formats the table spaces and maintains one border */
+table {
+    border-collapse: collapse;
+    text-align: left;
+    box-shadow: 0 0 5px 0 ; 
+    background: inherit; 
+    backdrop-filter: blur(10px); 
+    margin: 2px;
+    padding: 0;
+}
+
+/* sets solid line for the table and cells */
+td {
+    border: 1px solid rgba(141, 141, 141, 0.151);
+    text-align: left;
+}
+
+/* customizes the table heading */
+th {
+    background-color: #343434;
+    color: burlywood;
+}
+
+/* adds space within each cell */
+
+th, td {
+    margin: 1%;
+    padding: 10px;
+}
+
+/* formats social media icons on about page */
+.icons {
+    margin-top: 2%;
+    width: auto;
+}
+
+/* gallery styles */
+div.gallery {
+    margin: 10px;
+    /* border: 1px solid #ccc; */
+    float: left;
+    width: 180px;
+  }
+  
+  div.gallery:hover {
+    /* border: 1px solid #777; */
+    /* adds smooth transition of zoom in effect */
+    transition: ease-in 0.3s;
+    /* adds effect to zoom in subject */
+    transform: scale(1.1);
+  }
+  
+  div.gallery img {
+    width: 100%;
+    height: auto;
+    border-radius: 100px;
+  }
+  
+  div.desc {
+    padding: 15px;
+    text-align: center;
+  }
+
+/* responsive media queries */
+
+/* screens below 1024px such as tablets and mobile devices */
+@media all and (width < 1024px) {
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dots {
+        display:none;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .about{
+        width: 250px;
+        height: 250px;
+    }
+
+    form {
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+
+    select {
+        width: 100%;
+    }
+
+    /* Style The Dropdown Button */
+    .hamburger-btn {
+        background-repeat: no-repeat;
+        padding: 16px;
+        font-size: 24px;
+        border: none;
+        cursor: pointer;
+    }
+}
+
+/* screens below 1024px such as laptops and desktops */
+@media all and (width > 1024px) {
+
+}
+
