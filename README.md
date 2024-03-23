@@ -28,4 +28,4 @@ This is the full UI on a generic display, UI may vary depending on screen size a
 
 This is the Entity relationship diagram with shows the model of the database structure in use
 
-<img src ="screenshots/Votelani_ClassDiagram.png" alt="Class diagram">
+<img src ="screenshots/Votelani_ClassDiagram.jpg" alt="Class diagram">

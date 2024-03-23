@@ -224,6 +224,12 @@ th, td {
 }
 
 /* gallery styles */
+
+div.candidates {
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
 div.gallery {
     margin: 10px;
     /* border: 1px solid #ccc; */
@@ -231,24 +237,24 @@ div.gallery {
     width: 180px;
   }
   
-  div.gallery:hover {
+div.gallery:hover {
     /* border: 1px solid #777; */
     /* adds smooth transition of zoom in effect */
     transition: ease-in 0.3s;
     /* adds effect to zoom in subject */
     transform: scale(1.1);
-  }
-  
-  div.gallery img {
+}
+
+div.gallery img {
     width: 100%;
     height: auto;
     border-radius: 100px;
-  }
-  
-  div.desc {
+}
+
+div.desc {
     padding: 15px;
     text-align: center;
-  }
+}
 
 /* responsive media queries */
 
@@ -289,6 +295,10 @@ div.gallery {
         font-size: 24px;
         border: none;
         cursor: pointer;
+    }
+
+    div.gallery {
+        width: 100px;
     }
 }
 
