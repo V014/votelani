@@ -35,11 +35,11 @@
       <form action="#" method="post">
         <div class="selection">
           <h3>Leader</h3>
-          <select>
-            <option>Choose president</option>
-            <option>Lazarus Chakwera</option>
-            <option>Peter Mutharika</option>
-            <option>Atupele Muluzi</option>
+          <select name="president" id="president-select">
+            <option value="">Choose president</option>
+            <option value="Lazarus Chakwera">Lazarus Chakwera</option>
+            <option value="Peter Mutharika">Peter Mutharika</option>
+            <option value="Atupele Muluzi">Atupele Muluzi</option>
           </select>
         </div>
 
@@ -67,7 +67,7 @@
       <!-- Candidate images -->
       <div class="candidates">
         <div class="gallery">
-          <img src="assets/img/img.jpg" alt="">
+          <img id="president-image" src="assets/img/img.jpg" alt="">
         </div>
 
         <div class="gallery">
@@ -83,5 +83,18 @@
     <footer>
         Orbit Media All rights reserved &copy;2024
     </footer>
+    <script>
+      // function that changes the selected images to selected candidates
+      function changeImage(selectedElem, imgElem) {
+        let img = document.getElementById(imgElem);
+        let select = document.getElementById(selectedElem);
+        select.addEventListener("change", function(e) {
+          let selected = e.target.value;
+          img.src = selected;
+        });
+      }
+
+      changeImage("president-select", "president-image");
+    </script>
 </body>
 </html>
