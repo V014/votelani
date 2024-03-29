@@ -193,7 +193,7 @@ select {
     width: 100%;
 }
 
-.button input:hover {
+.button :hover {
     background-color: #333; 
     /* sets a smooth transition between nav buttons */
     transition: background-color .3s; 
@@ -302,6 +302,7 @@ div.desc {
 
     /* Style The Dropdown Button */
     .hamburger-btn {
+        background-image: url(../img/menu-light.png);
         background-repeat: no-repeat;
         padding: 16px;
         font-size: 24px;
