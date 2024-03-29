@@ -172,6 +172,10 @@ input {
     width: 35%;
 }
 
+.textfield {
+    width: 98%;
+}
+
 select {
     padding: 1%;
     border-radius: 20px;
@@ -182,9 +186,17 @@ select {
 }
 
 .button {
+    margin-top: 2%;
+    padding: 1%;
     color: white;
     background-color: #38703d;
-    width: 15%;
+    width: 100%;
+}
+
+.button input:hover {
+    background-color: #333; 
+    /* sets a smooth transition between nav buttons */
+    transition: background-color .3s; 
 }
 
 /* formats the table spaces and maintains one border */
