@@ -33,8 +33,10 @@
     <!-- Voting Form -->
     <div class="content">
       <form action="#" method="post">
+        <!-- select president -->
         <div class="selection">
           <h3>Leader</h3>
+          <!-- id tag pointing to an image element on change -->
           <select name="president" id="president-select">
             <option value="">Choose president</option>
             <option value="Lazarus Chakwera">Lazarus Chakwera</option>
@@ -43,18 +45,22 @@
           </select>
         </div>
 
+        <!-- select chancellor -->
         <div class="selection">
           <h3>Chancellor</h3>
-          <select>
+          <!-- id tag pointing to an image element on change -->
+          <select name="chancellor" id="chancellor-select">
             <option>Choose Chancellor</option>
             <option>Leonard Chimbanga BT</option>
             <option>Noel Chalamanda BT</option>
           </select>
         </div>
 
+        <!-- select member of parliament -->
         <div class="selection">
           <h3>MP</h3>
-          <select>
+          <!-- id tag pointing to an image element on change -->
+          <select name="mp" id="mp-select">
             <option>Choose Member of parliament</option>
             <option>John Bande</option>
             <option>Nicolas Dausi</option>
@@ -67,15 +73,18 @@
       <!-- Candidate images -->
       <div class="candidates">
         <div class="gallery">
-          <img id="president-image" src="assets/img/img.jpg" alt="">
+          <!-- id tag pointing to select president option -->
+          <img id="president-image" src="assets/img/img.jpg" alt="Image of selected president">
         </div>
 
         <div class="gallery">
-          <img src="assets/img/img.jpg" alt="">
+          <!-- id tag pointing to select chancellor option -->
+          <img id="chancellor-image" src="assets/img/img.jpg" alt="Image of selected chancellor">
         </div>
 
         <div class="gallery">
-          <img src="assets/img/img.jpg" alt="">
+          <!-- id tag pointing to select member of parliament option -->
+          <img id="mp-image" src="assets/img/img.jpg" alt="Image of selected member of parliament">
         </div>
       </div>
 
