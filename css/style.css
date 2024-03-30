@@ -29,13 +29,6 @@ h1 {
     padding: 1%; 
 }
 
-.row {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 4%;
-}
-
 /* formats footer */
 footer {
     text-align: center;
@@ -50,14 +43,6 @@ footer {
     font-size: larger;
     font-weight: bold;
     padding-left: 2%;
-}
-
-/* customizes horizontal rules */
-hr {
-    margin-top: 2%;
-    border: 0.5px solid #333;
-    margin-left: 30%;
-    margin-right: 30%;
 }
 
 .nav {
@@ -138,21 +123,6 @@ hr {
     color: white;
 }
 
-.cover-image { /* cover image properties */
-    width: 298px;
-    height: 421px;
-    margin-left: 1%;
-    margin-right: 1%;
-    /* adds shadow on blog image */
-    box-shadow: 10px 10px 20px -10px #333;
-}
-
-/* adds space after paragraph */
-p {
-    padding-bottom: 1%;
-    padding-top: 1%;
-}
-
 /* form */
 form {
     background-color: #343434;
@@ -193,53 +163,10 @@ select {
     width: 100%;
 }
 
-.button :hover {
-    background-color: #333; 
-    /* sets a smooth transition between nav buttons */
-    transition: background-color .3s; 
-}
-
-/* formats the table spaces and maintains one border */
-table {
-    border-collapse: collapse;
-    text-align: left;
-    box-shadow: 0 0 5px 0 ; 
-    background: inherit; 
-    backdrop-filter: blur(10px); 
-    margin: 2px;
-    padding: 0;
-}
-
-/* sets solid line for the table and cells */
-td {
-    border: 1px solid rgba(141, 141, 141, 0.151);
-    text-align: left;
-}
-
-/* customizes the table heading */
-th {
-    background-color: #343434;
-    color: burlywood;
-}
-
-/* adds space within each cell */
-
-th, td {
-    margin: 1%;
-    padding: 10px;
-}
-
-/* formats social media icons on about page */
-.icons {
-    margin-top: 2%;
-    width: auto;
-}
-
 /* gallery styles */
 
 div.candidates {
-    margin-left: 25%;
-    margin-right: 25%;
+    
 }
 
 div.gallery {
