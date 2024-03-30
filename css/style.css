@@ -124,7 +124,7 @@ form {
 
 /* formatting input */
 input {
-    padding: 1%;
+    padding: 2%;
     border-radius: 20px;
     border-style: none;
     margin-bottom: 2%;
@@ -133,7 +133,7 @@ input {
 }
 
 .textfield {
-    width: 98%;
+    width: 95%;
 }
 
 select {
@@ -147,10 +147,14 @@ select {
 
 .button {
     margin-top: 2%;
-    padding: 1%;
+    padding: 2%;
     color: white;
     background-color: #38703d;
     width: 100%;
+}
+
+input.button:hover {
+    background-color: #204723;
 }
 
 /* gallery styles */
@@ -209,8 +213,8 @@ div.desc {
     }
 
     form {
-        margin-left: 25%;
-        margin-right: 25%;
+        margin-left: 20%;
+        margin-right: 20%;
     }
 
     select {

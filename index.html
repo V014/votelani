@@ -33,6 +33,8 @@
     <!-- Voting Form -->
     <div class="content">
       <form action="#" method="post">
+        <h3>Voter's ID</h3>
+        <input class="textfield" type="text" name="voteID" placeholder="e.g. X23R4T" required> 
         <!-- select president -->
         <div class="selection">
           <h3>Leader</h3>
@@ -58,17 +60,15 @@
 
         <!-- select member of parliament -->
         <div class="selection">
-          <h3>MP</h3>
+          <h3>Member of parliament</h3>
           <!-- id tag pointing to an image element on change -->
           <select name="mp" id="mp-select">
-            <option value="img/person.png">Choose Member of parliament</option>
+            <option value="img/person.png">Choose MP</option>
             <option value="img/John_Bande.jpg">John Bande</option>
             <option value="img/Nicholas_Dausi.jpg">Nicholas Dausi</option>
             <option value="img/Patricia_Kaliati.jpg">Patricia Kaliati</option>
           </select>
         </div>
-        <h3>Voter's ID</h3>
-        <input class="textfield" type="text" name="voteID" placeholder="e.g. X23R4T"> 
         <input class="button" type="submit" value="Vote" name="vote">
       </form>
 
