@@ -156,10 +156,10 @@ select {
 /* gallery styles */
 
 div.candidates {
-    border: black 1px solid;
     padding: 1%;
     overflow: hidden;
-    
+    display: flex;
+    justify-content: center;
 }
 
 div.gallery {
