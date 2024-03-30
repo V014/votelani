@@ -12,30 +12,6 @@ body {
     color: white;
 }
 
-h1 {
-    font-size: 20px;
-    color: #ddd;
-}
-
-/* targets body content like paragraphs */
-.content {
-    /* text-align: center;  */
-    flex: 1;
-    padding-top: 2%;
-}
-
-.content h2 {
-    /* space out heading */
-    padding: 1%; 
-}
-
-/* formats footer */
-footer {
-    text-align: center;
-    padding-top: 2%;
-    margin-top: auto;
-}
-
 /* Navigation bar */
 
 .brand {
@@ -123,6 +99,20 @@ footer {
     color: white;
 }
 
+/* targets body content like paragraphs */
+.content {
+    /* text-align: center;  */
+    flex: 1;
+    padding-top: 2%;
+}
+
+/* formats footer */
+footer {
+    text-align: center;
+    padding-top: 2%;
+    margin-top: auto;
+}
+
 /* form */
 form {
     background-color: #343434;
@@ -166,18 +156,19 @@ select {
 /* gallery styles */
 
 div.candidates {
+    border: black 1px solid;
+    padding: 1%;
+    overflow: hidden;
     
 }
 
 div.gallery {
     margin: 10px;
-    /* border: 1px solid #ccc; */
     float: left;
-    width: 180px;
+    width: 10%;
   }
   
 div.gallery:hover {
-    /* border: 1px solid #777; */
     /* adds smooth transition of zoom in effect */
     transition: ease-in 0.3s;
     /* adds effect to zoom in subject */
@@ -185,8 +176,7 @@ div.gallery:hover {
 }
 
 div.gallery img {
-    width: 100%;
-    height: auto;
+    max-width: 100%;
     border-radius: 100px;
 }
 
