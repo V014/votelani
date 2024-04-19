@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2024 at 07:25 AM
+-- Generation Time: Apr 19, 2024 at 08:58 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -31,14 +31,23 @@ CREATE TABLE `candidate` (
   `CandidateID` int(3) NOT NULL,
   `Firstname` varchar(15) NOT NULL,
   `Lastname` varchar(15) NOT NULL,
-  `Nationality` int(15) NOT NULL,
-  `DateOfBirth` datetime NOT NULL,
+  `Nationality` varchar(15) NOT NULL,
+  `DateOfBirth` date NOT NULL,
   `Role` enum('President','Chancellor','MP') NOT NULL,
   `Party` varchar(30) NOT NULL,
   `Village` varchar(30) NOT NULL,
   `TraditionalAuthority` varchar(15) NOT NULL,
   `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `candidate`
+--
+
+INSERT INTO `candidate` (`CandidateID`, `Firstname`, `Lastname`, `Nationality`, `DateOfBirth`, `Role`, `Party`, `Village`, `TraditionalAuthority`, `Date`) VALUES
+(1, 'Lazarus', 'Chakwera', 'Malawian', '1955-04-05', 'President', 'Malawi Congress Party', '', '', '2024-04-19 06:55:32'),
+(2, 'Peter', 'Mutharika', 'Malawian', '1940-07-18', 'President', 'Democratic Progressive Party', 'Thyolo', '', '2024-04-19 06:55:32'),
+(3, 'Atupele', 'Muluzi', 'Malawian', '1978-08-06', 'President', 'United Democratic Front', '', '', '2024-04-19 06:58:11');
 
 -- --------------------------------------------------------
 
@@ -98,7 +107,7 @@ ALTER TABLE `event`
 -- AUTO_INCREMENT for table `candidate`
 --
 ALTER TABLE `candidate`
-  MODIFY `CandidateID` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `CandidateID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `citizen`
