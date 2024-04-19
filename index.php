@@ -83,21 +83,21 @@
           <!-- id tag pointing to select president option -->
           <img id="president-image" src="img/person.png" alt="Image of selected president">
           <!-- Vote count -->
-          <p>10,023</p>
+          <p>0</p>
         </div>
 
         <div class="gallery">
           <!-- id tag pointing to select chancellor option -->
           <img id="chancellor-image" src="img/person.png" alt="Image of selected chancellor">
           <!-- Vote count -->
-          <p>102</p>
+          <p>0</p>
         </div>
 
         <div class="gallery">
           <!-- id tag pointing to select member of parliament option -->
           <img id="mp-image" src="img/person.png" alt="Image of selected member of parliament">
           <!-- Vote count -->
-          <p>1990</p>
+          <p>0</p>
         </div>
       </div>
 
