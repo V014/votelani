@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2024 at 10:27 AM
+-- Generation Time: Apr 19, 2024 at 02:41 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -64,9 +64,21 @@ INSERT INTO `candidate` (`CandidateID`, `Firstname`, `Lastname`, `Nationality`, 
 
 CREATE TABLE `citizen` (
   `CitizenID` int(3) NOT NULL,
-  `VoterID` varchar(8) NOT NULL,
+  `VoterID` varchar(10) NOT NULL,
   `Registered` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `citizen`
+--
+
+INSERT INTO `citizen` (`CitizenID`, `VoterID`, `Registered`) VALUES
+(1, 'MW00000001', '2024-04-19 12:40:11'),
+(2, 'MW00000002', '2024-04-19 12:40:11'),
+(3, 'MW00000003', '2024-04-19 12:40:28'),
+(4, 'MW00000004', '2024-04-19 12:40:28'),
+(5, 'MW00000005', '2024-04-19 12:40:44'),
+(6, 'MW00000006', '2024-04-19 12:40:44');
 
 -- --------------------------------------------------------
 
@@ -120,7 +132,7 @@ ALTER TABLE `candidate`
 -- AUTO_INCREMENT for table `citizen`
 --
 ALTER TABLE `citizen`
-  MODIFY `CitizenID` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `CitizenID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `event`
