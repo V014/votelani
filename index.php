@@ -58,9 +58,9 @@
           <h3>Chancellor</h3>
           <!-- id tag pointing to an image element on change -->
           <select name="chancellor" id="chancellor-select" onchange="fetchData(ChancellorID)">
-            <option value="img/person.png">Choose Chancellor</option>
-            <option value="img/Leonard_Chimbanga.jpg">Leonard Chimbanga BT</option>
-            <option value="img/Noel_Chalamanda.jpg">Noel Chalamanda BT</option>
+            <option value="person">Choose Chancellor</option>
+            <option value="Leonard_Chimbanga">Leonard Chimbanga BT</option>
+            <option value="Noel_Chalamanda">Noel Chalamanda BT</option>
           </select>
         </div>
 
@@ -69,10 +69,10 @@
           <h3>Member of parliament</h3>
           <!-- id tag pointing to an image element on change -->
           <select name="mp" id="mp-select" onchange="fetchData(MPID)">
-            <option value="img/person.png">Choose MP</option>
-            <option value="img/John_Bande.jpg">John Bande</option>
-            <option value="img/Nicholas_Dausi.jpg">Nicholas Dausi</option>
-            <option value="img/Patricia_Kaliati.jpg">Patricia Kaliati</option>
+            <option value="person">Choose MP</option>
+            <option value="John_Bande">John Bande</option>
+            <option value="Nicholas_Dausi">Nicholas Dausi</option>
+            <option value="Patricia_Kaliati">Patricia Kaliati</option>
           </select>
         </div>
         <input class="button" type="submit" value="Vote" name="vote">
