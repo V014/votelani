@@ -23,6 +23,7 @@
                 <li><a href="about.html">About</a></li>
             </ul>
         </div>
+        <!-- This navigation bar appears on small screens -->
         <div class="dropdown">
             <div class="hamburger-btn"></div>
             <div class="dropdown-content">
