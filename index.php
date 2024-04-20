@@ -75,7 +75,7 @@
           </select>
         </div>
         <input class="button" type="submit" value="Vote" name="vote">
-      </form>
+      </form> <!-- closed form -->
 
       <!-- Candidate images -->
       <div class="candidates">
@@ -121,6 +121,19 @@
       changeImage("president-select", "president-image");
       changeImage("chancellor-select", "chancellor-image");
       changeImage("mp-select", "mp-image");
+      // function that checks the current vote count of selected candidate
+      function fetchData(selectedElem) {
+        const selectElement = document. getElementById(selectedElem);
+        const selectedValue = selectedElement.value;
+        // send a GET request to the PHP script
+        fetch(getData.php?selectedValue=${selectedValue})
+        .then(response => response.text())
+        .then(data => {
+          const dataContainer = 
+          document.getElementById('data-container');
+          dataContainer.innerHTML = data;
+        });
+      }
     </script>
 </body>
 </html>
