@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2024 at 02:41 PM
+-- Generation Time: Apr 20, 2024 at 11:38 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -88,7 +88,7 @@ INSERT INTO `citizen` (`CitizenID`, `VoterID`, `Registered`) VALUES
 
 CREATE TABLE `event` (
   `EventID` int(3) NOT NULL,
-  `VoterID` int(3) NOT NULL,
+  `CitizenID` int(3) NOT NULL,
   `Location` varchar(30) NOT NULL,
   `PresidentID` int(3) NOT NULL,
   `ChancellorID` int(3) NOT NULL,

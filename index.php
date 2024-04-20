@@ -45,7 +45,7 @@
         <div class="selection">
           <h3>Leader</h3>
           <!-- id tag pointing to an image element on change -->
-          <select name="president" id="president-select">
+          <select name="president" id="president-select" onchange="fetchData()">
             <option value="img/person.png">Choose president</option>
             <option value="img/Lazarus_Chakwera.jpg">Lazarus Chakwera</option>
             <option value="img/Peter_Mutharika.jpg">Peter Mutharika</option>
@@ -57,7 +57,7 @@
         <div class="selection">
           <h3>Chancellor</h3>
           <!-- id tag pointing to an image element on change -->
-          <select name="chancellor" id="chancellor-select">
+          <select name="chancellor" id="chancellor-select" onchange="fetchData()">
             <option value="img/person.png">Choose Chancellor</option>
             <option value="img/Leonard_Chimbanga.jpg">Leonard Chimbanga BT</option>
             <option value="img/Noel_Chalamanda.jpg">Noel Chalamanda BT</option>
@@ -68,7 +68,7 @@
         <div class="selection">
           <h3>Member of parliament</h3>
           <!-- id tag pointing to an image element on change -->
-          <select name="mp" id="mp-select">
+          <select name="mp" id="mp-select" onchange="fetchData()">
             <option value="img/person.png">Choose MP</option>
             <option value="img/John_Bande.jpg">John Bande</option>
             <option value="img/Nicholas_Dausi.jpg">Nicholas Dausi</option>
@@ -122,16 +122,17 @@
       changeImage("president-select", "president-image");
       changeImage("chancellor-select", "chancellor-image");
       changeImage("mp-select", "mp-image");
+      
       // function that checks the current vote count of selected candidate
       function fetchData(selectedElem) {
         const selectElement = document. getElementById(selectedElem);
-        const selectedValue = selectedElement.value;
+        const selectedValue = selectedElem.value;
+
         // send a GET request to the PHP script
-        fetch(getData.php?selectedValue=${selectedValue})
+        fetch(`php/getData.php?selectedValue=${selectedValue}`)
         .then(response => response.text())
         .then(data => {
-          const dataContainer = 
-          document.getElementById('data-container');
+          const dataContainer = document.getElementById('data-container');
           dataContainer.innerHTML = data;
         });
       }
