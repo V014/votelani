@@ -5,7 +5,7 @@ include 'connection.php';
 $selectedValue = $_GET['selectedValue'];
 
  // Query the database
- $query = "SELECT COUNT(ID) FROM `event` WHERE myColumn = '$selectedValue'";
+ $query = "SELECT COUNT($selectedValue) FROM `event`";
  $result = mysqli_query($connection, $query);
 
  // Fetch the data

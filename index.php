@@ -45,11 +45,11 @@
         <div class="selection">
           <h3>Leader</h3>
           <!-- id tag pointing to an image element on change -->
-          <select name="president" id="president-select" onchange="fetchData()">
-            <option value="img/person.png">Choose president</option>
-            <option value="img/Lazarus_Chakwera.jpg">Lazarus Chakwera</option>
-            <option value="img/Peter_Mutharika.jpg">Peter Mutharika</option>
-            <option value="img/Atupele_Muluzi.jpg">Atupele Muluzi</option>
+          <select name="president" id="president-select" onchange="fetchData(PresidentID)">
+            <option value="person">Choose president</option>
+            <option value="Lazarus_Chakwera">Lazarus Chakwera</option>
+            <option value="Peter_Mutharika">Peter Mutharika</option>
+            <option value="Atupele_Muluzi">Atupele Muluzi</option>
           </select>
         </div>
 
@@ -57,7 +57,7 @@
         <div class="selection">
           <h3>Chancellor</h3>
           <!-- id tag pointing to an image element on change -->
-          <select name="chancellor" id="chancellor-select" onchange="fetchData()">
+          <select name="chancellor" id="chancellor-select" onchange="fetchData(ChancellorID)">
             <option value="img/person.png">Choose Chancellor</option>
             <option value="img/Leonard_Chimbanga.jpg">Leonard Chimbanga BT</option>
             <option value="img/Noel_Chalamanda.jpg">Noel Chalamanda BT</option>
@@ -68,7 +68,7 @@
         <div class="selection">
           <h3>Member of parliament</h3>
           <!-- id tag pointing to an image element on change -->
-          <select name="mp" id="mp-select" onchange="fetchData()">
+          <select name="mp" id="mp-select" onchange="fetchData(MPID)">
             <option value="img/person.png">Choose MP</option>
             <option value="img/John_Bande.jpg">John Bande</option>
             <option value="img/Nicholas_Dausi.jpg">Nicholas Dausi</option>
@@ -112,9 +112,10 @@
       function changeImage(selectedElem, imgElem) {
         let img = document.getElementById(imgElem);
         let select = document.getElementById(selectedElem);
+        
         select.addEventListener("change", function(e) {
           let selected = e.target.value;
-          img.src = selected;
+          img.src = `img/${selected}.png`;
         });
       }
 
