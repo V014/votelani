@@ -110,9 +110,10 @@
     <script>
       // function that changes the selected images to selected candidates
       function changeImage(selectedElem, imgElem) {
+        // declare variables
         let img = document.getElementById(imgElem);
         let select = document.getElementById(selectedElem);
-        
+        // device image update event
         select.addEventListener("change", function(e) {
           let selected = e.target.value;
           img.src = `img/${selected}.png`;
@@ -126,9 +127,9 @@
       
       // function that checks the current vote count of selected candidate
       function fetchData(selectedElem) {
+        // declare variables
         const selectElement = document. getElementById(selectedElem);
         const selectedValue = selectedElem.value;
-
         // send a GET request to the PHP script
         fetch(`php/getData.php?selectedValue=${selectedValue}`)
         .then(response => response.text())

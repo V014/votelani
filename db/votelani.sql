@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2024 at 11:38 AM
+-- Generation Time: Apr 21, 2024 at 05:11 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -116,7 +116,11 @@ ALTER TABLE `citizen`
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
-  ADD PRIMARY KEY (`EventID`);
+  ADD PRIMARY KEY (`EventID`),
+  ADD KEY `CitizenID` (`CitizenID`),
+  ADD KEY `PresidentID` (`PresidentID`),
+  ADD KEY `ChancellorID` (`ChancellorID`),
+  ADD KEY `MPID` (`MPID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -139,6 +143,19 @@ ALTER TABLE `citizen`
 --
 ALTER TABLE `event`
   MODIFY `EventID` int(3) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `event`
+--
+ALTER TABLE `event`
+  ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`CitizenID`) REFERENCES `citizen` (`CitizenID`),
+  ADD CONSTRAINT `event_ibfk_2` FOREIGN KEY (`PresidentID`) REFERENCES `candidate` (`CandidateID`),
+  ADD CONSTRAINT `event_ibfk_3` FOREIGN KEY (`ChancellorID`) REFERENCES `candidate` (`CandidateID`),
+  ADD CONSTRAINT `event_ibfk_4` FOREIGN KEY (`MPID`) REFERENCES `candidate` (`CandidateID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
