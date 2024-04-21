@@ -126,9 +126,9 @@
       changeImage("mp-select", "mp-image");
       
       // function that checks the current vote count of selected candidate
-      function fetchData(selectedElem) {
+      function fetchData(selectedElem, selectedCandidate) {
         // declare variables
-        const selectElement = document. getElementById(selectedElem);
+        const selectElement = document.getElementById(selectedElem);
         const selectedValue = selectedElem.value;
         // send a GET request to the PHP script
         fetch(`php/getData.php?selectedValue=${selectedValue}`)
@@ -138,6 +138,10 @@
           dataContainer.innerHTML = data;
         });
       }
+
+      fetchData("president-select");
+      fetchData("chancellor-select");
+      fetchData("mp-select");
     </script>
 </body>
 </html>
