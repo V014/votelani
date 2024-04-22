@@ -126,17 +126,18 @@
       changeImage("mp-select", "mp-image");
       
       // function that checks the current vote count of selected candidate
-      function fetchData(selectedElem, selectedCandidate) {
-        // declare variables
-        const selectElement = document.getElementById(selectedElem);
-        const selectedValue = selectedElem.value;
-        // send a GET request to the PHP script
-        fetch(`php/getData.php?selectedValue=${selectedValue}`)
-        .then(response => response.text())
-        .then(data => {
-          const dataContainer = document.getElementById('data-container');
-          dataContainer.innerHTML = data;
-        });
+      function fetchData(selectElement, selectedCandidate) {
+        // Get the selected candidate and selection option
+        const selectedCandidate = selectElement.options[selectElement.selectedIndex].text;
+        const selectionOption = selectElement.id; // e.g., "president-select"
+
+        // Send a GET request to the PHP script with the selected candidate and selection option
+        fetch(`php/getData.php?selectedCandidate=${selectedCandidate}&selectionOption=${selectionOption}`)
+          .then(response => response.text())
+          .then(data => {
+            const dataContainer = document.getElementById('data-container');
+            dataContainer.innerHTML = `Vote count for ${selectedCandidate}: ${data}`;
+          });
       }
 
       fetchData("president-select");
