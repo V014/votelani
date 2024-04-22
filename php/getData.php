@@ -5,7 +5,8 @@ include 'connection.php';
 $selectedValue = $_GET['selectedValue'];
 
  // Query the database
- $query = "SELECT COUNT($selectedValue) FROM `event`";
+ $query = "SELECT COUNT[$selectionOption] FROM `event` WHERE candidate = '$selectedCandidate'";
+
  $result = mysqli_query($connection, $query);
 
  // Fetch the data
