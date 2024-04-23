@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2024 at 05:11 PM
+-- Generation Time: Apr 23, 2024 at 09:21 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -50,10 +50,9 @@ INSERT INTO `candidate` (`CandidateID`, `Firstname`, `Lastname`, `Nationality`, 
 (2, 'Peter', 'Mutharika', 'Malawian', '1940-07-18', 'President', 'Democratic Progressive Party', 'Thyolo', '', 'Yes', '2024-04-19 06:55:32'),
 (3, 'Atupele', 'Muluzi', 'Malawian', '1978-08-06', 'President', 'United Democratic Front', '', '', 'Yes', '2024-04-19 06:58:11'),
 (4, 'Leonard', 'Chimbanga', 'Malawian', NULL, 'Chancellor', NULL, NULL, NULL, 'Yes', '2024-04-19 08:21:27'),
-(5, 'Leonard', 'Chimbanga', 'Malawian', NULL, 'Chancellor', NULL, NULL, NULL, 'Yes', '2024-04-19 08:21:27'),
-(6, 'Noel', 'Chalamanda', 'Malawian', NULL, 'Chancellor', NULL, NULL, NULL, 'Yes', '2024-04-19 08:21:27'),
-(7, 'John', 'Bande', 'Malawian', NULL, 'MP', NULL, NULL, NULL, 'Yes', '2024-04-19 08:21:27'),
-(8, 'Nocholas', 'Dausi', 'Malawian', NULL, 'MP', NULL, NULL, NULL, 'Yes', '2024-04-19 08:21:27'),
+(5, 'Noel', 'Chalamanda', 'Malawian', NULL, 'Chancellor', NULL, NULL, NULL, 'Yes', '2024-04-23 06:49:51'),
+(6, 'John', 'Bande', 'Malawian', NULL, 'MP', NULL, NULL, NULL, 'Yes', '2024-04-23 06:49:51'),
+(7, 'Nocholas', 'Dausi', 'Malawian', NULL, 'MP', NULL, NULL, NULL, 'Yes', '2024-04-23 06:49:51'),
 (9, 'Patricia', 'Kaliati', 'Malawian', NULL, 'MP', NULL, NULL, NULL, 'Yes', '2024-04-19 08:21:27');
 
 -- --------------------------------------------------------
@@ -87,13 +86,37 @@ INSERT INTO `citizen` (`CitizenID`, `VoterID`, `Registered`) VALUES
 --
 
 CREATE TABLE `event` (
+  `EventID` int(11) NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `date` date NOT NULL,
+  `Position` enum('President','Chancellor','MP') NOT NULL,
+  `Status` enum('Upcoming','Ongoing','Completed') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `votecounts`
+--
+
+CREATE TABLE `votecounts` (
+  `CandidateID` int(2) NOT NULL,
   `EventID` int(3) NOT NULL,
-  `CitizenID` int(3) NOT NULL,
-  `Location` varchar(30) NOT NULL,
-  `PresidentID` int(3) NOT NULL,
-  `ChancellorID` int(3) NOT NULL,
-  `MPID` int(3) NOT NULL,
-  `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `Count` int(8) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `votes`
+--
+
+CREATE TABLE `votes` (
+  `VotesID` int(8) NOT NULL,
+  `CitizenID` int(10) NOT NULL,
+  `EventID` int(3) NOT NULL,
+  `CandidateID` int(2) NOT NULL,
+  `Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -116,11 +139,16 @@ ALTER TABLE `citizen`
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
-  ADD PRIMARY KEY (`EventID`),
+  ADD PRIMARY KEY (`EventID`);
+
+--
+-- Indexes for table `votes`
+--
+ALTER TABLE `votes`
+  ADD PRIMARY KEY (`VotesID`),
   ADD KEY `CitizenID` (`CitizenID`),
-  ADD KEY `PresidentID` (`PresidentID`),
-  ADD KEY `ChancellorID` (`ChancellorID`),
-  ADD KEY `MPID` (`MPID`);
+  ADD KEY `CandidateID` (`CandidateID`),
+  ADD KEY `EventID` (`EventID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -142,20 +170,27 @@ ALTER TABLE `citizen`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `EventID` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `EventID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `votes`
+--
+ALTER TABLE `votes`
+  MODIFY `VotesID` int(8) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `event`
+-- Constraints for table `votes`
 --
-ALTER TABLE `event`
-  ADD CONSTRAINT `event_ibfk_1` FOREIGN KEY (`CitizenID`) REFERENCES `citizen` (`CitizenID`),
-  ADD CONSTRAINT `event_ibfk_2` FOREIGN KEY (`PresidentID`) REFERENCES `candidate` (`CandidateID`),
-  ADD CONSTRAINT `event_ibfk_3` FOREIGN KEY (`ChancellorID`) REFERENCES `candidate` (`CandidateID`),
-  ADD CONSTRAINT `event_ibfk_4` FOREIGN KEY (`MPID`) REFERENCES `candidate` (`CandidateID`);
+ALTER TABLE `votes`
+  ADD CONSTRAINT `votes_ibfk_1` FOREIGN KEY (`CitizenID`) REFERENCES `citizen` (`CitizenID`),
+  ADD CONSTRAINT `votes_ibfk_2` FOREIGN KEY (`EventID`) REFERENCES `event` (`EventID`),
+  ADD CONSTRAINT `votes_ibfk_3` FOREIGN KEY (`CandidateID`) REFERENCES `candidate` (`CandidateID`),
+  ADD CONSTRAINT `votes_ibfk_4` FOREIGN KEY (`CandidateID`) REFERENCES `candidate` (`CandidateID`),
+  ADD CONSTRAINT `votes_ibfk_5` FOREIGN KEY (`EventID`) REFERENCES `event` (`EventID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
