@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2024 at 09:21 AM
+-- Generation Time: Apr 23, 2024 at 09:38 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -29,15 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `candidate` (
   `CandidateID` int(3) NOT NULL,
-  `Firstname` varchar(15) NOT NULL,
-  `Lastname` varchar(15) NOT NULL,
-  `Nationality` varchar(15) NOT NULL,
-  `DateOfBirth` date DEFAULT NULL,
+  `Name` varchar(50) NOT NULL,
   `Role` enum('President','Chancellor','MP') NOT NULL,
-  `Party` varchar(30) DEFAULT NULL,
-  `Village` varchar(30) DEFAULT NULL,
-  `TraditionalAuthority` varchar(15) DEFAULT NULL,
-  `Active` enum('Yes','No') NOT NULL,
+  `Party` varchar(50) DEFAULT NULL,
+  `Biography` varchar(280) DEFAULT NULL,
   `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -45,15 +40,15 @@ CREATE TABLE `candidate` (
 -- Dumping data for table `candidate`
 --
 
-INSERT INTO `candidate` (`CandidateID`, `Firstname`, `Lastname`, `Nationality`, `DateOfBirth`, `Role`, `Party`, `Village`, `TraditionalAuthority`, `Active`, `Date`) VALUES
-(1, 'Lazarus', 'Chakwera', 'Malawian', '1955-04-05', 'President', 'Malawi Congress Party', '', '', 'Yes', '2024-04-19 06:55:32'),
-(2, 'Peter', 'Mutharika', 'Malawian', '1940-07-18', 'President', 'Democratic Progressive Party', 'Thyolo', '', 'Yes', '2024-04-19 06:55:32'),
-(3, 'Atupele', 'Muluzi', 'Malawian', '1978-08-06', 'President', 'United Democratic Front', '', '', 'Yes', '2024-04-19 06:58:11'),
-(4, 'Leonard', 'Chimbanga', 'Malawian', NULL, 'Chancellor', NULL, NULL, NULL, 'Yes', '2024-04-19 08:21:27'),
-(5, 'Noel', 'Chalamanda', 'Malawian', NULL, 'Chancellor', NULL, NULL, NULL, 'Yes', '2024-04-23 06:49:51'),
-(6, 'John', 'Bande', 'Malawian', NULL, 'MP', NULL, NULL, NULL, 'Yes', '2024-04-23 06:49:51'),
-(7, 'Nocholas', 'Dausi', 'Malawian', NULL, 'MP', NULL, NULL, NULL, 'Yes', '2024-04-23 06:49:51'),
-(9, 'Patricia', 'Kaliati', 'Malawian', NULL, 'MP', NULL, NULL, NULL, 'Yes', '2024-04-19 08:21:27');
+INSERT INTO `candidate` (`CandidateID`, `Name`, `Role`, `Party`, `Biography`, `Date`) VALUES
+(1, 'Lazarus Chakwera', 'President', 'Malawi Congress Party', '', '2024-04-23 07:35:06'),
+(2, 'Peter Mutharika', 'President', 'Democratic Progressive Party', 'Thyolo', '2024-04-23 07:33:47'),
+(3, 'Atupele Muluzi', 'President', 'United Democratic Front', '', '2024-04-23 07:33:47'),
+(4, 'Leonard Chimbanga', 'Chancellor', NULL, NULL, '2024-04-23 07:35:06'),
+(5, 'Noel Chalamanda', 'Chancellor', NULL, NULL, '2024-04-23 07:33:47'),
+(6, 'John Bande', 'MP', NULL, NULL, '2024-04-23 07:33:47'),
+(7, 'Nocholas Dausi', 'MP', NULL, NULL, '2024-04-23 07:33:47'),
+(9, 'Patricia Kaliati', 'MP', NULL, NULL, '2024-04-23 07:35:06');
 
 -- --------------------------------------------------------
 
@@ -77,7 +72,11 @@ INSERT INTO `citizen` (`CitizenID`, `VoterID`, `Registered`) VALUES
 (3, 'MW00000003', '2024-04-19 12:40:28'),
 (4, 'MW00000004', '2024-04-19 12:40:28'),
 (5, 'MW00000005', '2024-04-19 12:40:44'),
-(6, 'MW00000006', '2024-04-19 12:40:44');
+(6, 'MW00000006', '2024-04-19 12:40:44'),
+(7, 'MW00000007', '2024-04-23 07:37:12'),
+(8, 'MW00000008', '2024-04-23 07:37:29'),
+(9, 'MW00000009', '2024-04-23 07:37:53'),
+(10, 'MW00000010', '2024-04-23 07:37:53');
 
 -- --------------------------------------------------------
 
@@ -92,6 +91,13 @@ CREATE TABLE `event` (
   `Position` enum('President','Chancellor','MP') NOT NULL,
   `Status` enum('Upcoming','Ongoing','Completed') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `event`
+--
+
+INSERT INTO `event` (`EventID`, `Name`, `date`, `Position`, `Status`) VALUES
+(1, 'Presidential Elections 2024', '2024-04-23', 'President', 'Ongoing');
 
 -- --------------------------------------------------------
 
@@ -112,7 +118,7 @@ CREATE TABLE `votecounts` (
 --
 
 CREATE TABLE `votes` (
-  `VotesID` int(8) NOT NULL,
+  `VoteID` int(8) NOT NULL,
   `CitizenID` int(10) NOT NULL,
   `EventID` int(3) NOT NULL,
   `CandidateID` int(2) NOT NULL,
@@ -145,7 +151,7 @@ ALTER TABLE `event`
 -- Indexes for table `votes`
 --
 ALTER TABLE `votes`
-  ADD PRIMARY KEY (`VotesID`),
+  ADD PRIMARY KEY (`VoteID`),
   ADD KEY `CitizenID` (`CitizenID`),
   ADD KEY `CandidateID` (`CandidateID`),
   ADD KEY `EventID` (`EventID`);
@@ -164,19 +170,19 @@ ALTER TABLE `candidate`
 -- AUTO_INCREMENT for table `citizen`
 --
 ALTER TABLE `citizen`
-  MODIFY `CitizenID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `CitizenID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `EventID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `EventID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `VotesID` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `VoteID` int(8) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
