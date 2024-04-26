@@ -139,8 +139,6 @@
             const voteCountElement = document.getElementById('vote-count');
             voteCountElement.innerHTML = `Vote count: ${data.vote_count}`;
           });
-
-        getVoteCount.php
       }
 
       fetchData("president-select");

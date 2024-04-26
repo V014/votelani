@@ -1,8 +1,10 @@
 <?php 
 include 'connection.php';
 
-// get the selected value from the Get request
-$selectedValue = $_GET['selectedValue'];
+// Get the selected candidate and selection option from the GET request
+$selectedCandidate = $_GET['selectedCandidate'];
+$selectionOption = $_GET['selectionOption'];
+
 
  // Query the database
  $query = "SELECT COUNT[$selectionOption] FROM `event` WHERE candidate = '$selectedCandidate'";
