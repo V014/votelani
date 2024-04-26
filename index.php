@@ -45,7 +45,7 @@
         <div class="selection">
           <h3>Leader</h3>
           <!-- id tag pointing to an image element on change -->
-          <select name="president" id="president-select" onchange="fetchData(PresidentID)">
+          <select name="president" id="president-select" onchange="fetchData('president-select', this.options[this.selectedIndex].dataset.presidentID)">
             <option value="person">Choose president</option>
             <option data-presidentID="1" value="Lazarus_Chakwera">Lazarus Chakwera</option>
             <option data-presidentID="2" value="Peter_Mutharika">Peter Mutharika</option>
@@ -127,23 +127,32 @@
       
       // function that checks the current vote count of selected candidate
       function fetchData(selectElement, selectedCandidate) {
-        // Get the selected candidate and selection option
-        const selectedOption = selectElement.options[selectElement.selectedIndex];
-        const presidentID = selectedOption.dataset.presidentID;
+      // Get the selected candidate and selection option
+      const selectedOption = selectElement.options[selectElement.selectedIndex];
+      const presidentID = selectedOption.dataset ? selectedOption.dataset.presidentID : null;
 
+      // Make an AJAX request to retrieve the vote count
+      fetch(`php/getVoteCount.php?selectedCandidate=${selectedCandidate}&selectionOption=${selectedOption}`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`Error fetching vote count: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const voteCountElement = document.getElementById('vote-count');
+          voteCountElement.innerHTML = `Vote count: ${data.vote_count}`;
+        })
+        .catch(error => {
+          console.error('Error fetching vote count:', error);
+          const voteCountElement = document.getElementById('vote-count');
+          voteCountElement.innerHTML = 'Error fetching vote count';
+        });
+    }
 
-        // Make an AJAX request to retrieve the vote count
-        fetch(`php/getVoteCount.php?selectedCandidate=${selectedCandidate}&selectionOption=${selectedOption}`)
-          .then(response => response.json())
-          .then(data => {
-            const voteCountElement = document.getElementById('vote-count');
-            voteCountElement.innerHTML = `Vote count: ${data.vote_count}`;
-          });
-      }
-
-      fetchData("president-select");
-      fetchData("chancellor-select");
-      fetchData("mp-select");
+    fetchData("president-select");
+    fetchData("chancellor-select");
+    fetchData("mp-select");
     </script>
 </body>
 </html>
