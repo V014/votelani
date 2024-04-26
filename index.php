@@ -47,9 +47,9 @@
           <!-- id tag pointing to an image element on change -->
           <select name="president" id="president-select" onchange="fetchData(PresidentID)">
             <option value="person">Choose president</option>
-            <option presidentID="1" value="Lazarus_Chakwera">Lazarus Chakwera</option>
-            <option presidentID="2" value="Peter_Mutharika">Peter Mutharika</option>
-            <option presidentID="3" value="Atupele_Muluzi">Atupele Muluzi</option>
+            <option data-presidentID="1" value="Lazarus_Chakwera">Lazarus Chakwera</option>
+            <option data-presidentID="2" value="Peter_Mutharika">Peter Mutharika</option>
+            <option data-presidentID="3" value="Atupele_Muluzi">Atupele Muluzi</option>
           </select>
         </div>
 
@@ -59,8 +59,8 @@
           <!-- id tag pointing to an image element on change -->
           <select name="chancellor" id="chancellor-select" onchange="fetchData(ChancellorID)">
             <option value="person">Choose Chancellor</option>
-            <option ChancellorID="4" value="Leonard_Chimbanga">Leonard Chimbanga BT</option>
-            <option ChancellorID="5" value="Noel_Chalamanda">Noel Chalamanda BT</option>
+            <option data-ChancellorID="4" value="Leonard_Chimbanga">Leonard Chimbanga BT</option>
+            <option data-ChancellorID="5" value="Noel_Chalamanda">Noel Chalamanda BT</option>
           </select>
         </div>
 
@@ -70,9 +70,9 @@
           <!-- id tag pointing to an image element on change -->
           <select name="mp" id="mp-select" onchange="fetchData(MPID)">
             <option value="person">Choose MP</option>
-            <option MPID="6" value="John_Bande">John Bande</option>
-            <option MPID="7" value="Nicholas_Dausi">Nicholas Dausi</option>
-            <option MPID="8" value="Patricia_Kaliati">Patricia Kaliati</option>
+            <option data-MPID="6" value="John_Bande">John Bande</option>
+            <option data-MPID="7" value="Nicholas_Dausi">Nicholas Dausi</option>
+            <option data-MPID="8" value="Patricia_Kaliati">Patricia Kaliati</option>
           </select>
         </div>
         <input class="button" type="submit" value="Vote" name="vote">
@@ -84,21 +84,21 @@
           <!-- id tag pointing to select president option -->
           <img id="president-image" src="img/person.png" alt="Image of selected president">
           <!-- Vote count -->
-          <p><div id="data-container">0</div></p>
+          <p><div id="vote-count">0</div></p>
         </div>
 
         <div class="gallery">
           <!-- id tag pointing to select chancellor option -->
           <img id="chancellor-image" src="img/person.png" alt="Image of selected chancellor">
           <!-- Vote count -->
-          <p><div id="data-container">0</div></p>
+          <p><div id="vote-count">0</div></p>
         </div>
 
         <div class="gallery">
           <!-- id tag pointing to select member of parliament option -->
           <img id="mp-image" src="img/person.png" alt="Image of selected member of parliament">
           <!-- Vote count -->
-          <p><div id="data-container">0</div></p>
+          <p><div id="vote-count">0</div></p>
         </div>
       </div>
 
@@ -128,16 +128,19 @@
       // function that checks the current vote count of selected candidate
       function fetchData(selectElement, selectedCandidate) {
         // Get the selected candidate and selection option
-        selectedCandidate = selectElement.options[selectElement.selectedIndex].text;
-        const selectionOption = selectElement.id; // e.g., "president-select"
+        const selectedOption = selectElement.options[selectElement.selectedIndex];
+        const presidentID = selectedOption.dataset.presidentID;
 
-        // Send a GET request to the PHP script with the selected candidate and selection option
-        fetch(`php/getData.php?selectedCandidate=${selectedCandidate}&selectionOption=${selectionOption}`)
-          .then(response => response.text())
+
+        // Make an AJAX request to retrieve the vote count
+        fetch(`php/getVoteCount.php?selectedCandidate=${selectedCandidate}&selectionOption=${selectedOption}`)
+          .then(response => response.json())
           .then(data => {
-            const dataContainer = document.getElementById('data-container');
-            dataContainer.innerHTML = `Vote count for ${selectedCandidate}: ${data}`;
+            const voteCountElement = document.getElementById('vote-count');
+            voteCountElement.innerHTML = `Vote count: ${data.vote_count}`;
           });
+
+        getVoteCount.php
       }
 
       fetchData("president-select");
