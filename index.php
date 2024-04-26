@@ -47,9 +47,9 @@
           <!-- id tag pointing to an image element on change -->
           <select name="president" id="president-select" onchange="fetchData(PresidentID)">
             <option value="person">Choose president</option>
-            <option value="Lazarus_Chakwera">Lazarus Chakwera</option>
-            <option value="Peter_Mutharika">Peter Mutharika</option>
-            <option value="Atupele_Muluzi">Atupele Muluzi</option>
+            <option presidentID="1" value="Lazarus_Chakwera">Lazarus Chakwera</option>
+            <option presidentID="2" value="Peter_Mutharika">Peter Mutharika</option>
+            <option presidentID="3" value="Atupele_Muluzi">Atupele Muluzi</option>
           </select>
         </div>
 
@@ -59,8 +59,8 @@
           <!-- id tag pointing to an image element on change -->
           <select name="chancellor" id="chancellor-select" onchange="fetchData(ChancellorID)">
             <option value="person">Choose Chancellor</option>
-            <option value="Leonard_Chimbanga">Leonard Chimbanga BT</option>
-            <option value="Noel_Chalamanda">Noel Chalamanda BT</option>
+            <option ChancellorID="4" value="Leonard_Chimbanga">Leonard Chimbanga BT</option>
+            <option ChancellorID="5" value="Noel_Chalamanda">Noel Chalamanda BT</option>
           </select>
         </div>
 
@@ -70,9 +70,9 @@
           <!-- id tag pointing to an image element on change -->
           <select name="mp" id="mp-select" onchange="fetchData(MPID)">
             <option value="person">Choose MP</option>
-            <option value="John_Bande">John Bande</option>
-            <option value="Nicholas_Dausi">Nicholas Dausi</option>
-            <option value="Patricia_Kaliati">Patricia Kaliati</option>
+            <option MPID="6" value="John_Bande">John Bande</option>
+            <option MPID="7" value="Nicholas_Dausi">Nicholas Dausi</option>
+            <option MPID="8" value="Patricia_Kaliati">Patricia Kaliati</option>
           </select>
         </div>
         <input class="button" type="submit" value="Vote" name="vote">
@@ -128,7 +128,7 @@
       // function that checks the current vote count of selected candidate
       function fetchData(selectElement, selectedCandidate) {
         // Get the selected candidate and selection option
-        const selectedCandidate = selectElement.options[selectElement.selectedIndex].text;
+        selectedCandidate = selectElement.options[selectElement.selectedIndex].text;
         const selectionOption = selectElement.id; // e.g., "president-select"
 
         // Send a GET request to the PHP script with the selected candidate and selection option
