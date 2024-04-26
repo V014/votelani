@@ -5,19 +5,19 @@ include 'connection.php';
 $selectedCandidate = $_GET['selectedCandidate'];
 $selectionOption = $_GET['selectionOption'];
 
+// Retrieve the CandidateID from the votecounts table
+$query = "SELECT CandidateID FROM votecounts WHERE EventID = '$selectionOption' AND CandidateID = '$selectedCandidate'";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_array($result);
+$candidateID = $row['CandidateID'];
 
- // Query the database
- $query = "SELECT COUNT[$selectionOption] FROM `event` WHERE candidate = '$selectedCandidate'";
+// Retrieve the vote count from the votes table
+$query = "SELECT COUNT(*) as vote_count FROM votes WHERE CandidateID = '$candidateID'";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_array($result);
+$voteCount = $row['vote_count'];
 
- $result = mysqli_query($connection, $query);
+// Return the vote count in JSON format
+echo json_encode(['vote_count' => $voteCount]);
 
- // Fetch the data
- $data = '';
- while ($row = mysqli_fetch_assoc($result)) {
-    $data .= '<p>' . $row['myField'] . '</p>';
- }
-
- // Close the connection
- mysqli_close($connection);
- echo $data;
 ?>
