@@ -45,7 +45,7 @@
         <div class="selection">
           <h3>Leader</h3>
           <!-- id tag pointing to an image element on change -->
-          <select name="president" id="president-select" onchange="fetchData('president-select', this.options[this.selectedIndex].dataset.presidentID)">
+          <select name="president" id="president-select" onchange="fetchData()">
             <option value="person">Choose president</option>
             <option data-presidentID="1" value="Lazarus_Chakwera">Lazarus Chakwera</option>
             <option data-presidentID="2" value="Peter_Mutharika">Peter Mutharika</option>
@@ -57,7 +57,7 @@
         <div class="selection">
           <h3>Chancellor</h3>
           <!-- id tag pointing to an image element on change -->
-          <select name="chancellor" id="chancellor-select" onchange="fetchData(ChancellorID)">
+          <select name="chancellor" id="chancellor-select" onchange="fetchData()">
             <option value="person">Choose Chancellor</option>
             <option data-ChancellorID="4" value="Leonard_Chimbanga">Leonard Chimbanga BT</option>
             <option data-ChancellorID="5" value="Noel_Chalamanda">Noel Chalamanda BT</option>
@@ -68,7 +68,7 @@
         <div class="selection">
           <h3>Member of parliament</h3>
           <!-- id tag pointing to an image element on change -->
-          <select name="mp" id="mp-select" onchange="fetchData(MPID)">
+          <select name="mp" id="mp-select" onchange="fetchData()">
             <option value="person">Choose MP</option>
             <option data-MPID="6" value="John_Bande">John Bande</option>
             <option data-MPID="7" value="Nicholas_Dausi">Nicholas Dausi</option>
