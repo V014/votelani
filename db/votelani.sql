@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2024 at 09:38 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Generation Time: May 05, 2024 at 06:20 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -102,18 +102,6 @@ INSERT INTO `event` (`EventID`, `Name`, `date`, `Position`, `Status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `votecounts`
---
-
-CREATE TABLE `votecounts` (
-  `CandidateID` int(2) NOT NULL,
-  `EventID` int(3) NOT NULL,
-  `Count` int(8) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `votes`
 --
 
@@ -122,8 +110,22 @@ CREATE TABLE `votes` (
   `CitizenID` int(10) NOT NULL,
   `EventID` int(3) NOT NULL,
   `CandidateID` int(2) NOT NULL,
-  `Date` date NOT NULL
+  `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `votes`
+--
+
+INSERT INTO `votes` (`VoteID`, `CitizenID`, `EventID`, `CandidateID`, `Date`) VALUES
+(1, 1, 1, 1, '2024-05-04 07:00:00'),
+(2, 2, 1, 1, '2024-05-04 07:00:00'),
+(3, 3, 1, 2, '2024-05-04 07:00:00'),
+(4, 4, 1, 2, '2024-05-04 07:00:00'),
+(5, 5, 1, 3, '0000-00-00 00:00:00'),
+(6, 6, 1, 3, '2024-05-04 07:00:00'),
+(7, 7, 1, 2, '2024-05-04 07:00:00'),
+(8, 8, 1, 2, '2024-05-04 07:00:00');
 
 --
 -- Indexes for dumped tables
@@ -182,7 +184,7 @@ ALTER TABLE `event`
 -- AUTO_INCREMENT for table `votes`
 --
 ALTER TABLE `votes`
-  MODIFY `VoteID` int(8) NOT NULL AUTO_INCREMENT;
+  MODIFY `VoteID` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables

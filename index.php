@@ -45,7 +45,7 @@
         <div class="selection">
           <h3>Leader</h3>
           <!-- id tag pointing to an image element on change -->
-          <select name="president" id="president-select" onchange="fetchData()">
+          <select name="president" id="president-select" onchange="fetchData('president-select','data-presidentID')">
             <option value="person">Choose president</option>
             <option data-presidentID="1" value="Lazarus_Chakwera">Lazarus Chakwera</option>
             <option data-presidentID="2" value="Peter_Mutharika">Peter Mutharika</option>
@@ -57,7 +57,7 @@
         <div class="selection">
           <h3>Chancellor</h3>
           <!-- id tag pointing to an image element on change -->
-          <select name="chancellor" id="chancellor-select" onchange="fetchData()">
+          <select name="chancellor" id="chancellor-select" onchange="fetchData('chancellor-select','data-ChancellorID')">
             <option value="person">Choose Chancellor</option>
             <option data-ChancellorID="4" value="Leonard_Chimbanga">Leonard Chimbanga BT</option>
             <option data-ChancellorID="5" value="Noel_Chalamanda">Noel Chalamanda BT</option>
@@ -68,7 +68,7 @@
         <div class="selection">
           <h3>Member of parliament</h3>
           <!-- id tag pointing to an image element on change -->
-          <select name="mp" id="mp-select" onchange="fetchData()">
+          <select name="mp" id="mp-select" onchange="fetchData('mp-select','data-MPID')">
             <option value="person">Choose MP</option>
             <option data-MPID="6" value="John_Bande">John Bande</option>
             <option data-MPID="7" value="Nicholas_Dausi">Nicholas Dausi</option>
@@ -84,21 +84,21 @@
           <!-- id tag pointing to select president option -->
           <img id="president-image" src="img/person.png" alt="Image of selected president">
           <!-- Vote count -->
-          <p><div id="vote-count">0</div></p>
+          <p><div id="president-vote-count">0</div></p>
         </div>
 
         <div class="gallery">
           <!-- id tag pointing to select chancellor option -->
           <img id="chancellor-image" src="img/person.png" alt="Image of selected chancellor">
           <!-- Vote count -->
-          <p><div id="vote-count">0</div></p>
+          <p><div id="chancellor-vote-count">0</div></p>
         </div>
 
         <div class="gallery">
           <!-- id tag pointing to select member of parliament option -->
           <img id="mp-image" src="img/person.png" alt="Image of selected member of parliament">
           <!-- Vote count -->
-          <p><div id="vote-count">0</div></p>
+          <p><div id="mp-vote-count">0</div></p>
         </div>
       </div>
 
@@ -120,6 +120,8 @@
         });
       }
 
+      function getVoteCount() {}
+
       // Call the change name function to react to change
       changeImage("president-select", "president-image");
       changeImage("chancellor-select", "chancellor-image");
@@ -128,7 +130,9 @@
       // function that checks the current vote count of selected candidate
       function fetchData(selectElement, selectedCandidate) {
       // Get the selected candidate and selection option
-      const selectedOption = selectElement.options[selectElement.selectedIndex];
+      // const selectedOption = selectElement.options[selectElement.selectedIndex];
+      const selectedOption = document.getElementById(selectElement);
+      console.log(selectedOption.getAttribute(selectedCandidate));
       const presidentID = selectedOption.dataset ? selectedOption.dataset.presidentID : null;
 
       // Make an AJAX request to retrieve the vote count
