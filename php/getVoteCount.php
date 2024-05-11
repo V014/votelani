@@ -4,6 +4,7 @@ include 'connection.php';
 // Get the selected candidate and selection option from the GET request
 $selectedCandidate = $_GET['selectedCandidate'];
 $selectionOption = $_GET['selectionOption'];
+$candidateID = $_GET[''];
 
 // Retrieve the CandidateID from the votecounts table
 // $query = "SELECT CandidateID FROM votecounts WHERE EventID = '$selectionOption' AND CandidateID = '$selectedCandidate'";
