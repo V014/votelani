@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2024 at 06:20 AM
+-- Generation Time: May 31, 2024 at 10:27 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -107,9 +107,11 @@ INSERT INTO `event` (`EventID`, `Name`, `date`, `Position`, `Status`) VALUES
 
 CREATE TABLE `votes` (
   `VoteID` int(8) NOT NULL,
-  `CitizenID` int(10) NOT NULL,
   `EventID` int(3) NOT NULL,
-  `CandidateID` int(2) NOT NULL,
+  `CitizenID` int(10) NOT NULL,
+  `PresidentID` int(2) NOT NULL,
+  `ChancellorID` int(3) NOT NULL,
+  `MPID` int(3) NOT NULL,
   `Date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -117,15 +119,15 @@ CREATE TABLE `votes` (
 -- Dumping data for table `votes`
 --
 
-INSERT INTO `votes` (`VoteID`, `CitizenID`, `EventID`, `CandidateID`, `Date`) VALUES
-(1, 1, 1, 1, '2024-05-04 07:00:00'),
-(2, 2, 1, 1, '2024-05-04 07:00:00'),
-(3, 3, 1, 2, '2024-05-04 07:00:00'),
-(4, 4, 1, 2, '2024-05-04 07:00:00'),
-(5, 5, 1, 3, '0000-00-00 00:00:00'),
-(6, 6, 1, 3, '2024-05-04 07:00:00'),
-(7, 7, 1, 2, '2024-05-04 07:00:00'),
-(8, 8, 1, 2, '2024-05-04 07:00:00');
+INSERT INTO `votes` (`VoteID`, `EventID`, `CitizenID`, `PresidentID`, `ChancellorID`, `MPID`, `Date`) VALUES
+(1, 1, 1, 1, 0, 0, '2024-05-04 07:00:00'),
+(2, 1, 2, 1, 0, 0, '2024-05-04 07:00:00'),
+(3, 1, 3, 2, 0, 0, '2024-05-04 07:00:00'),
+(4, 1, 4, 2, 0, 0, '2024-05-04 07:00:00'),
+(5, 1, 5, 3, 0, 0, '0000-00-00 00:00:00'),
+(6, 1, 6, 3, 0, 0, '2024-05-04 07:00:00'),
+(7, 1, 7, 2, 0, 0, '2024-05-04 07:00:00'),
+(8, 1, 8, 2, 0, 0, '2024-05-04 07:00:00');
 
 --
 -- Indexes for dumped tables
@@ -155,8 +157,8 @@ ALTER TABLE `event`
 ALTER TABLE `votes`
   ADD PRIMARY KEY (`VoteID`),
   ADD KEY `CitizenID` (`CitizenID`),
-  ADD KEY `CandidateID` (`CandidateID`),
-  ADD KEY `EventID` (`EventID`);
+  ADD KEY `EventID` (`EventID`),
+  ADD KEY `PresidentID` (`PresidentID`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -196,8 +198,8 @@ ALTER TABLE `votes`
 ALTER TABLE `votes`
   ADD CONSTRAINT `votes_ibfk_1` FOREIGN KEY (`CitizenID`) REFERENCES `citizen` (`CitizenID`),
   ADD CONSTRAINT `votes_ibfk_2` FOREIGN KEY (`EventID`) REFERENCES `event` (`EventID`),
-  ADD CONSTRAINT `votes_ibfk_3` FOREIGN KEY (`CandidateID`) REFERENCES `candidate` (`CandidateID`),
-  ADD CONSTRAINT `votes_ibfk_4` FOREIGN KEY (`CandidateID`) REFERENCES `candidate` (`CandidateID`),
+  ADD CONSTRAINT `votes_ibfk_3` FOREIGN KEY (`PresidentID`) REFERENCES `candidate` (`CandidateID`),
+  ADD CONSTRAINT `votes_ibfk_4` FOREIGN KEY (`PresidentID`) REFERENCES `candidate` (`CandidateID`),
   ADD CONSTRAINT `votes_ibfk_5` FOREIGN KEY (`EventID`) REFERENCES `event` (`EventID`);
 COMMIT;
 
