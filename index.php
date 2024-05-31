@@ -38,14 +38,15 @@ session_start();
     </div>
   </nav>
 
-  <!-- Voting Form -->
   <div class="content">
+    <!-- Voting Form -->
     <form action="#" method="post">
-      <h3>Voter's ID</h3>
+    <h3 class="heading">Malawi Presidential Elections 2024</h3>
+      <h5>Voter's ID</h5>
       <input class="textfield" type="text" name="voteID" id="voteID" placeholder="e.g. X23R4T" required>
       <!-- select president -->
       <div class="selection">
-        <h3>Leader</h3>
+        <h5>Leader</h5>
         <!-- id tag pointing to an image element on change -->
         <select name="president" id="president-select">
           <option value="person">Choose president</option>
@@ -57,7 +58,7 @@ session_start();
 
       <!-- select chancellor -->
       <div class="selection">
-        <h3>Chancellor</h3>
+        <h5>Chancellor</h5>
         <!-- id tag pointing to an image element on change -->
         <select name="chancellor" id="chancellor-select">
           <option value="person">Choose Chancellor</option>
@@ -68,7 +69,7 @@ session_start();
 
       <!-- select member of parliament -->
       <div class="selection">
-        <h3>Member of parliament</h3>
+        <h5>Member of parliament</h5>
         <!-- id tag pointing to an image element on change -->
         <select name="mp" id="mp-select">
           <option value="person">Choose MP</option>

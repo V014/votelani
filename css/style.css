@@ -9,7 +9,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    color: white;
+    /* color: white; */
 }
 
 /* Navigation bar */
@@ -101,7 +101,6 @@ body {
 
 /* targets body content like paragraphs */
 .content {
-    /* text-align: center;  */
     flex: 1;
     padding-top: 2%;
 }
@@ -120,6 +119,10 @@ form {
     margin-left: 40%;
     margin-right: 40%;
     border-radius: 30px;
+}
+
+h2 {
+    color: #38703d;
 }
 
 /* formatting input */
