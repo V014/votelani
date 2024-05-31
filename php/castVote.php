@@ -11,6 +11,9 @@ $mp = $_POST['mp'];
 $sql = "INSERT INTO votes (voteID, presidentID, chancellorID, mp)
         VALUES ('$voterID', '$president', '$chancellor', '$mp')";
 
+// push the command to the database
+mysqli_query($conn, $sql);
+
 // Close the database connection
 mysqli_close($conn);
 
