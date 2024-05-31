@@ -20,8 +20,8 @@ session_start();
     <div class="nav">
       <ul>
         <li><a href="index.html" class="active-nav">Home</a></li>
-        <li><a href="verification.html">Verification</a></li>
         <li><a href="ballot.html">Ballot</a></li>
+        <li><a href="verification.html">Verification</a></li>
         <li><a href="about.html">About</a></li>
       </ul>
     </div>
@@ -31,8 +31,8 @@ session_start();
       <div class="dropdown-content">
         <a>Menu</a>
         <a href="index.html" class="active-menu">Home</a>
-        <a href="verification.html">Verification</a>
         <a href="ballot.html">Ballot</a>
+        <a href="verification.html">Verification</a>
         <a href="about.html">About</a>
       </div>
     </div>
@@ -77,7 +77,8 @@ session_start();
           <option data-id="8" value="Patricia_Kaliati">Patricia Kaliati</option>
         </select>
       </div>
-      <input class="button" type="submit" value="Vote" name="vote">
+      <input class="button" type="submit" value="Vote" name="vote" id="submit">
+      <div id="reply"></div>
     </form> <!-- closed form -->
 
     <!-- Candidate images -->
@@ -113,9 +114,24 @@ session_start();
   </div> <!-- end of content -->
 
   <footer>
-    Orbit Media All rights reserved &copy;2024
+    Orbit Media &copy; All rights reserved 2024
   </footer>
   <script>
+    // function that sends data to database
+    $(document).ready(function(){
+      $("submit").click(function(){
+        var president = $('#president-select').val();
+      });
+
+      $.ajax({
+        url:'php/castVote.php',
+        data:'Vote casted!',
+        success:function(data){
+          $('#content').html(data);
+        }
+      })  
+    });
+
     // function that changes the selected images to selected candidates
     function changeImage(selectedElem, imgElem) {
       // declare variables
