@@ -1,5 +1,6 @@
 $(document).ready(function(){
-    $("submit").click(function(){
+    $("#submit").click(function(e){
+        e.preventDefault(); // Prevent the form from submitting normally
       var president = $('#president-select').val();
     });
 
