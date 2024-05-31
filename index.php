@@ -42,7 +42,7 @@ session_start();
   <div class="content">
     <form action="#" method="post">
       <h3>Voter's ID</h3>
-      <input class="textfield" type="text" name="voteID" placeholder="e.g. X23R4T" required>
+      <input class="textfield" type="text" name="voteID" id="voteID" placeholder="e.g. X23R4T" required>
       <!-- select president -->
       <div class="selection">
         <h3>Leader</h3>
@@ -116,22 +116,8 @@ session_start();
   <footer>
     Orbit Media &copy; All rights reserved 2024
   </footer>
+  <script src="js/castVote.js"></script>
   <script>
-    // function that sends data to database
-    $(document).ready(function(){
-      $("submit").click(function(){
-        var president = $('#president-select').val();
-      });
-
-      $.ajax({
-        url:'php/castVote.php',
-        data:'Vote casted!',
-        success:function(data){
-          $('#content').html(data);
-        }
-      })  
-    });
-
     // function that changes the selected images to selected candidates
     function changeImage(selectedElem, imgElem) {
       // declare variables
