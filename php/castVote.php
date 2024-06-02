@@ -4,9 +4,9 @@ include 'connection.php';
 // Get the form data
 $voterID = $_POST['voterID'];
 $eventID = $_POST['eventID'];
-$president = $_POST['PresidentID'];
-$chancellor = $_POST['ChancellorID'];
-$mp = $_POST['MPID'];
+$presidentID = $_POST['PresidentID'];
+$chancellorID = $_POST['ChancellorID'];
+$mpID = $_POST['mpID'];
 
 // code to get citizen ID from voter ID
 $getCitizenID = "SELECT CitizenID FROM citizen WHERE VoterID = '$voterID'";
