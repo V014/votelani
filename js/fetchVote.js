@@ -20,6 +20,7 @@ function fetchVote(selectElement, voteTarget) {
         fetch(`php/getVoteCount.php?selectedCandidate=${candidateID}&selectionOption=${candidateType}`)
             .then(response => {
             response.json().then(json => voteTarget.innerHTML = json['vote_count']);
+            debugger
             })
             .catch(error => {
             console.error('Error fetching vote count:', error);
