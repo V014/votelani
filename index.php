@@ -135,11 +135,11 @@ session_start();
         //select element
         let selectedOption = selectElement.options[selectElement.selectedIndex];
         let candidateID = selectedOption.getAttribute('data-id');
-        let candidateType = selectElement.getAttribute
+        let candidateType = selectElement.getAttribute('id');
 
         if (candidateID != null || candidateID != undefined) {
           // Make an AJAX request to retrieve the vote count
-          fetch(`php/getVoteCount.php?selectedCandidate=${candidateID}&selectionOption=${selectedOption}`)
+          fetch(`php/getVoteCount.php?selectedCandidate=${candidateID}&selectionOption=${candidateType}`)
             .then(response => {
               response.json().then(json => voteTarget.innerHTML = json['vote_count']);
               debugger
@@ -154,9 +154,9 @@ session_start();
       });
     }
 
-    fetchVote("president-select", "president-vote-count");
-    fetchVote("chancellor-select", "chancellor-vote-count");
-    fetchVote("mp-select", "mp-vote-count");
+    fetchVote("PresidentID", "president-vote-count");
+    fetchVote("ChancellorID", "chancellor-vote-count");
+    fetchVote("MPID", "mp-vote-count");
   </script>
 </body>
 
