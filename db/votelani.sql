@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 31, 2024 at 10:27 PM
+-- Generation Time: May 31, 2024 at 10:48 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -120,14 +120,14 @@ CREATE TABLE `votes` (
 --
 
 INSERT INTO `votes` (`VoteID`, `EventID`, `CitizenID`, `PresidentID`, `ChancellorID`, `MPID`, `Date`) VALUES
-(1, 1, 1, 1, 0, 0, '2024-05-04 07:00:00'),
-(2, 1, 2, 1, 0, 0, '2024-05-04 07:00:00'),
-(3, 1, 3, 2, 0, 0, '2024-05-04 07:00:00'),
-(4, 1, 4, 2, 0, 0, '2024-05-04 07:00:00'),
-(5, 1, 5, 3, 0, 0, '0000-00-00 00:00:00'),
-(6, 1, 6, 3, 0, 0, '2024-05-04 07:00:00'),
-(7, 1, 7, 2, 0, 0, '2024-05-04 07:00:00'),
-(8, 1, 8, 2, 0, 0, '2024-05-04 07:00:00');
+(1, 1, 1, 1, 4, 7, '2024-05-31 20:45:24'),
+(2, 1, 2, 1, 4, 7, '2024-05-31 20:45:24'),
+(3, 1, 3, 2, 5, 8, '2024-05-31 20:45:24'),
+(4, 1, 4, 2, 5, 8, '2024-05-31 20:45:24'),
+(5, 1, 5, 3, 4, 8, '2024-05-31 20:45:24'),
+(6, 1, 6, 3, 4, 6, '2024-05-31 20:45:24'),
+(7, 1, 7, 2, 5, 7, '2024-05-31 20:45:24'),
+(8, 1, 8, 2, 4, 7, '2024-05-31 20:45:24');
 
 --
 -- Indexes for dumped tables
@@ -158,7 +158,8 @@ ALTER TABLE `votes`
   ADD PRIMARY KEY (`VoteID`),
   ADD KEY `CitizenID` (`CitizenID`),
   ADD KEY `EventID` (`EventID`),
-  ADD KEY `PresidentID` (`PresidentID`) USING BTREE;
+  ADD KEY `PresidentID` (`PresidentID`) USING BTREE,
+  ADD KEY `ChancellorID` (`ChancellorID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -200,7 +201,8 @@ ALTER TABLE `votes`
   ADD CONSTRAINT `votes_ibfk_2` FOREIGN KEY (`EventID`) REFERENCES `event` (`EventID`),
   ADD CONSTRAINT `votes_ibfk_3` FOREIGN KEY (`PresidentID`) REFERENCES `candidate` (`CandidateID`),
   ADD CONSTRAINT `votes_ibfk_4` FOREIGN KEY (`PresidentID`) REFERENCES `candidate` (`CandidateID`),
-  ADD CONSTRAINT `votes_ibfk_5` FOREIGN KEY (`EventID`) REFERENCES `event` (`EventID`);
+  ADD CONSTRAINT `votes_ibfk_5` FOREIGN KEY (`EventID`) REFERENCES `event` (`EventID`),
+  ADD CONSTRAINT `votes_ibfk_6` FOREIGN KEY (`ChancellorID`) REFERENCES `candidate` (`CandidateID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

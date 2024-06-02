@@ -48,7 +48,7 @@ session_start();
       <div class="selection">
         <h5>Leader</h5>
         <!-- id tag pointing to an image element on change -->
-        <select name="president" id="president-select">
+        <select name="president" id="president-select" value="PresidentID">
           <option value="person">Choose president</option>
           <option data-id="1" value="Lazarus_Chakwera">Lazarus Chakwera</option>
           <option data-id="2" value="Peter_Mutharika">Peter Mutharika</option>
@@ -60,7 +60,7 @@ session_start();
       <div class="selection">
         <h5>Chancellor</h5>
         <!-- id tag pointing to an image element on change -->
-        <select name="chancellor" id="chancellor-select">
+        <select name="chancellor" id="chancellor-select" value="ChancellorID">
           <option value="person">Choose Chancellor</option>
           <option data-id="4" value="Leonard_Chimbanga">Leonard Chimbanga BT</option>
           <option data-id="5" value="Noel_Chalamanda">Noel Chalamanda BT</option>
@@ -71,7 +71,7 @@ session_start();
       <div class="selection">
         <h5>Member of parliament</h5>
         <!-- id tag pointing to an image element on change -->
-        <select name="mp" id="mp-select">
+        <select name="mp" id="mp-select" value="MPID">
           <option value="person">Choose MP</option>
           <option data-id="6" value="John_Bande">John Bande</option>
           <option data-id="7" value="Nicholas_Dausi">Nicholas Dausi</option>
@@ -117,20 +117,9 @@ session_start();
   <footer>
     Orbit Media &copy; All rights reserved 2024
   </footer>
+  <script src="js/changeImage.js"></script>
   <script src="js/castVote.js"></script>
   <script>
-    // function that changes the selected images to selected candidates
-    function changeImage(selectedElem, imgElem) {
-      // declare variables
-      let img = document.getElementById(imgElem);
-      let select = document.getElementById(selectedElem);
-      // device image update event
-      select.addEventListener("change", function(e) {
-        let selected = e.target.value;
-        img.src = `img/${selected}.png`;
-      });
-    }
-
     // Call the change name function to react to change
     changeImage("president-select", "president-image");
     changeImage("chancellor-select", "chancellor-image");
@@ -138,25 +127,26 @@ session_start();
 
     // function that checks the current vote count of selected candidate
     function fetchVote(selectElement, voteTarget) {
-      //Add onchange event listener to the selectEleement and when its
+      //Add onchange event listener to the selectElement and when its
       //selected value changes trigger a fetch request to the getVoteCount.php
-      //endpoint and parse the JSON response voute count and update the value
+      //endpoint and parse the JSON response vote count and update the value
       //of the voteTarget element
       selectElement = document.getElementById(selectElement);
       voteTarget = document.getElementById(voteTarget);
 
       selectElement.addEventListener("change", function(e) {
         //Access the available options in the select element and get the one
-        //options the user has chosen using the currently selected index of the
+        //option the user has chosen using the currently selected index of the
         //select element
         let selectedOption = selectElement.options[selectElement.selectedIndex];
         let candidateID = selectedOption.getAttribute('data-id');
 
         if (candidateID != null || candidateID != undefined) {
           // Make an AJAX request to retrieve the vote count
-          fetch(`php/getVoteCount.php?selectedCandidate=${candidateID}&selectionOption=${''}`)
+          fetch(`php/getVoteCount.php?selectedCandidate=${candidateID}&selectionOption=${selectedOption}`)
             .then(response => {
               response.json().then(json => voteTarget.innerHTML = json['vote_count']);
+              debugger
             })
             .catch(error => {
               console.error('Error fetching vote count:', error);
