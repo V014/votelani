@@ -120,11 +120,6 @@ session_start();
   <script src="js/changeImage.js"></script>
   <script src="js/castVote.js"></script>
   <script>
-    // Call the change name function to react to change
-    changeImage("president-select", "president-image");
-    changeImage("chancellor-select", "chancellor-image");
-    changeImage("mp-select", "mp-image");
-
     // function that checks the current vote count of selected candidate
     function fetchVote(selectElement, voteTarget) {
       //Add onchange event listener to the selectElement and when its

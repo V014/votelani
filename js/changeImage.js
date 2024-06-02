@@ -9,3 +9,8 @@ function changeImage(selectedElem, imgElem) {
       img.src = `img/${selected}.png`;
     });
   }
+
+// Call the change name function to react to change
+changeImage("president-select", "president-image");
+changeImage("chancellor-select", "chancellor-image");
+changeImage("mp-select", "mp-image");
