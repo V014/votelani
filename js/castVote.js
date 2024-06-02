@@ -3,7 +3,8 @@ $(document).ready(function(){
       e.preventDefault(); // Prevent the form from submitting normally
     
       // Get the form data
-      var voteID = $("input[name='voteID']").val();
+      var voteID = $("input[name='voterID']").val();
+      var eventID = $("h3#eventID").attr("value");
       var president = $("select[name='president'] option:selected").data('id');
       var chancellor = $("select[name='chancellor'] option:selected").data('id');
       var mp = $("select[name='mp'] option:selected").data('id');
@@ -13,12 +14,13 @@ $(document).ready(function(){
       url: "../php/castVote.php",
       data: {
           voteID: voteID,
+          eventID: eventID,
           president: president,
           chancellor: chancellor,
           mp: mp
       },
       success: function(data){
-        $("#reply").html(data); // Show the response from submit_vote.php
+        $("#reply").html(data); // Show the response from castVote.php
       }
     });
   }); 

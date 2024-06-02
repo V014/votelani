@@ -12,7 +12,6 @@ $row = mysqli_fetch_array($result);
 $voteCount = $row['vote_count'];
 
 // Return the vote count in JSON format
-// echo json_encode(['vote_count' => $voteCount]);
 echo json_encode(['vote_count' => $voteCount]);
 
 // Close the database connection

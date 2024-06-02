@@ -41,10 +41,10 @@ session_start();
 
   <div class="content">
     <!-- Voting Form -->
-    <form action="#" method="post">
-    <h3 class="heading">Malawi Tripartite Elections 2024</h3>
+    <form action="" method="post">
+    <h3 class="heading" id="eventID" value="1">Malawi Tripartite Elections 2024</h3>
       <p>Voter's ID</p>
-      <input class="textfield" type="text" name="voteID" id="voteID" placeholder="e.g. X23R4T" required>
+      <input class="textfield" type="text" name="voterID" id="voterID" placeholder="e.g. X23R4T" required>
       <!-- select president -->
       <div class="selection">
         <p>Leader</p>
