@@ -10,7 +10,7 @@ session_start();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
-  <title>Vote Leader</title>
+  <title>Votelani</title>
 </head>
 
 <body>
@@ -42,11 +42,11 @@ session_start();
     <!-- Voting Form -->
     <form action="#" method="post">
     <h3 class="heading">Malawi Presidential Elections 2024</h3>
-      <h5>Voter's ID</h5>
+      <p>Voter's ID</p>
       <input class="textfield" type="text" name="voteID" id="voteID" placeholder="e.g. X23R4T" required>
       <!-- select president -->
       <div class="selection">
-        <h5>Leader</h5>
+        <p>Leader</p>
         <!-- id tag pointing to an image element on change -->
         <select name="president" id="PresidentID">
           <option value="person">Choose president</option>
@@ -58,7 +58,7 @@ session_start();
 
       <!-- select chancellor -->
       <div class="selection">
-        <h5>Chancellor</h5>
+        <p>Chancellor</p>
         <!-- id tag pointing to an image element on change -->
         <select name="chancellor" id="ChancellorID">
           <option value="person">Choose Chancellor</option>
@@ -69,7 +69,7 @@ session_start();
 
       <!-- select member of parliament -->
       <div class="selection">
-        <h5>Member of parliament</h5>
+        <p>Member of parliament</p>
         <!-- id tag pointing to an image element on change -->
         <select name="mp" id="MPID">
           <option value="person">Choose MP</option>
