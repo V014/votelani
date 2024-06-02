@@ -7,7 +7,6 @@ $(document).ready(function(){
       var president = $("select[name='president'] option:selected").data('id');
       var chancellor = $("select[name='chancellor'] option:selected").data('id');
       var mp = $("select[name='mp'] option:selected").data('id');
-
       // Send the data to submit_vote.php using Ajax
       $.ajax({
       type: "POST",
