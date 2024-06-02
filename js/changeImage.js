@@ -11,6 +11,6 @@ function changeImage(selectedElem, imgElem) {
   }
 
 // Call the change name function to react to change
-changeImage("president-select", "president-image");
-changeImage("chancellor-select", "chancellor-image");
-changeImage("mp-select", "mp-image");
+changeImage("PresidentID", "president-image");
+changeImage("ChancellorID", "chancellor-image");
+changeImage("MPID", "mp-image");
