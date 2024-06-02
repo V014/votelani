@@ -110,6 +110,7 @@ footer {
     text-align: center;
     padding-top: 2%;
     margin-top: auto;
+    color: white;
 }
 
 /* form */
@@ -191,6 +192,14 @@ div.gallery img {
 div.desc {
     padding: 15px;
     text-align: center;
+}
+
+/* vote counter */
+div.voteCounter {
+    color: white;
+    background-color: #38703d;
+    border-radius: 30px;
+    padding-left: 8%;
 }
 
 /* responsive media queries */

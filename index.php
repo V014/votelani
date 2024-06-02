@@ -41,7 +41,7 @@ session_start();
   <div class="content">
     <!-- Voting Form -->
     <form action="#" method="post">
-    <h3 class="heading">Malawi Presidential Elections 2024</h3>
+    <h3 class="heading">Malawi Tripartite Elections 2024</h3>
       <p>Voter's ID</p>
       <input class="textfield" type="text" name="voteID" id="voteID" placeholder="e.g. X23R4T" required>
       <!-- select president -->
@@ -89,7 +89,7 @@ session_start();
         <img id="president-image" src="img/person.png" alt="Image of selected president">
         <!-- Vote count -->
         <p>
-        <div id="president-vote-count">0</div>
+        <div id="president-vote-count" class="voteCounter">0</div>
         </p>
       </div>
 
@@ -98,7 +98,7 @@ session_start();
         <img id="chancellor-image" src="img/person.png" alt="Image of selected chancellor">
         <!-- Vote count -->
         <p>
-        <div id="chancellor-vote-count">0</div>
+        <div id="chancellor-vote-count" class="voteCounter">0</div>
         </p>
       </div>
 
@@ -107,7 +107,7 @@ session_start();
         <img id="mp-image" src="img/person.png" alt="Image of selected member of parliament">
         <!-- Vote count -->
         <p>
-        <div id="mp-vote-count">0</div>
+        <div id="mp-vote-count" class="voteCounter">0</div>
         </p>
       </div>
     </div>
