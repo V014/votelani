@@ -10,14 +10,14 @@ $mp = $_POST['MPID'];
 
 // Insert the data into the database
 $sql = "INSERT INTO votes (voteID, EventID, CitizenID, PresidentID, ChancellorID, MPID)
-        VALUES ('$voterID', '$eventID' , '$president', '$chancellor', '$mp')";
+        VALUES ('$voterID', '$eventID', '$president', '$chancellor', '$mp')";
 
 // push the command to the database
-mysqli_query($conn, $sql);
+// mysqli_query($conn, $sql);
 
 // Close the database connection
-mysqli_close($conn);
+// mysqli_close($conn);
 
 // Return a response
-echo "Vote casted!";
+// echo "Vote casted!";
 ?>
